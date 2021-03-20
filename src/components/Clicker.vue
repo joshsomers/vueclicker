@@ -24,7 +24,7 @@
     width:100%;
     background:var(--color-sec);
     border:0;
-    height:70px;
+    height:120px;
     color: #fff;
     font-size:25px;
     font-weight:700;

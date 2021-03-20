@@ -36,6 +36,7 @@ export default new Vuex.Store({
         quantity: 0,
         unlocksAt: 0,
         earned: 0,
+        icon: 'glass-citrus',
       },
       {
         name: "Burger Van",
@@ -45,6 +46,7 @@ export default new Vuex.Store({
         quantity: 0,
         unlocksAt: 2,
         earned: 0,
+        icon: 'burger-soda',
       },
       {
         name: "Ramen Stall",
@@ -54,6 +56,7 @@ export default new Vuex.Store({
         quantity: 0,
         unlocksAt: 5,
         earned: 0,
+        icon: 'soup',
       },
       {
         name: "Kebab Shop",
@@ -63,6 +66,7 @@ export default new Vuex.Store({
         quantity: 0,
         unlocksAt: 10,
         earned: 0,
+        icon: 'shish-kebab',
       },
       {
         name: "Curry House",
@@ -72,6 +76,7 @@ export default new Vuex.Store({
         quantity: 0,
         unlocksAt: 14,
         earned: 0,
+        icon: 'toilet',
       },
       {
         name: "Sushi Bar",
@@ -81,6 +86,7 @@ export default new Vuex.Store({
         quantity: 0,
         unlocksAt: 20,
         earned: 0,
+        icon: 'fish-cooked',
       }
     ],
   },

@@ -4,7 +4,6 @@
       <Overview/>
       <Clicker/>
       <Upgrades/>
-      <Workers/>
     </div>
     <!--
     Buffs, e.g. "Clicks count for 10 clicks for 30 seconds".
@@ -13,6 +12,9 @@
     -->
     <div class="game-breakdown">
       <Breakdown/>
+    </div>
+    <div class="game-actions">
+      <Workers/>
     </div>
   </div>
 </template>
@@ -71,18 +73,30 @@
   }
 
   #game {
-    width: 1000px;
+    width: 100%;
+    min-width:1400px;
+    padding:0 30px;
     margin: 0 auto;
     display: flex;
+    align-items: flex-start;
 
     .game-main {
-      width: 70%;
-      padding-right: 15px;
+      width: 20%;
+      padding-right: 30px;
+      position:sticky;
+      top:0;
     }
 
     .game-breakdown {
-      width: 30%;
-      padding-left: 15px;
+      width: 50%;
+      padding:0 30px 100px 30px;
+    }
+
+    .game-actions {
+      width:30%;
+      padding-left:30px;
+      position:sticky;
+      top:0;
     }
   }
 

@@ -1,21 +1,33 @@
 <template>
   <div class="breakdown">
     <h2>Stonks</h2>
-    <table>
-      <tr class="worker" v-if="clicks > 0">
-        <td class="name" style="width:40%;"><h4>Clicks</h4></td>
-        <td class="quantity" style="width:10%;">x{{ clicks }}</td>
-        <td class="earned" style="width:50%;">{{ kFormat(Math.round(clicksTotal)) }}</td>
-      </tr>
-      <tr :key="index"
-          class="worker"
-          v-for="(worker, index) in workers"
+    <div class="worker-wrapper">
+      <div class="worker" v-if="clicks > 0">
+        <div class="worker-title">
+          <h4>Clicks</h4>
+          <div>
+            <span class="worker-title-quantity">x{{ clicks }}</span>
+            <span class="worker-title-earned"><img class="coin" src="../assets/coin-black.svg"> <span>{{ kFormat(Math.round(clicksTotal)) }}</span></span>
+          </div>
+        </div>
+      </div>
+      <div :key="index"
+           class="worker"
+           v-for="(worker, index) in workers"
       >
-        <td class="name" style="width:40%;"><h4>{{ worker.name }}</h4></td>
-        <td class="quantity" style="width:10%;">x{{ worker.quantity }}</td>
-        <td class="earned" style="width:50%;">{{ kFormat(Math.round(worker.earned)) }}</td>
-      </tr>
-    </table>
+        <div class="worker-title">
+          <h4>{{ worker.name }}</h4>
+          <div>
+            <span class="worker-title-quantity">x{{ worker.quantity }}</span>
+            <span class="worker-title-cps">{{ kFormat(worker.cps * worker.quantity) }}/s</span>
+            <span class="worker-title-earned"><img alt="" class="coin" src="../assets/coin-black.svg"> <span>{{ kFormat(Math.round(worker.earned)) }}</span></span>
+          </div>
+        </div>
+        <div class="worker-view">
+          <div :key="n" class="item" v-for="n in worker.quantity"><i class="fas" :class="'fa-'+ worker.icon"></i></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,10 +36,10 @@
     name: "breakdown",
     methods: {
       kFormat(num) {
-        if(Math.abs(num) > 999999){
+        if (Math.abs(num) > 999999) {
           return Math.sign(num) * ((Math.abs(num) / 1000000).toFixed(1)) + 'm';
-        } else if(Math.abs(num) > 9999){
-          return Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k';
+        } else if (Math.abs(num) > 9999) {
+          return Math.sign(num) * ((Math.abs(num) / 1000).toFixed(0)) + 'k';
         } else {
           return Math.sign(num) * Math.abs(num);
         }
@@ -52,26 +64,43 @@
     margin-top: 50px;
   }
 
-  table {
-    border-collapse: collapse;
-    margin-top: 30px;
+  .worker-wrapper {
+    margin-top:10px;
+    .worker {
+      padding: 20px;
+      background: var(--color-offwhite);
 
-    tr {
-      border-bottom:1px solid rgba(#000,.1);
-      td {
-        padding: 10px 0;
-        font-weight: 700;
+      & + .worker {
+        margin-top: 10px;
+      }
 
-        & + td {
-          padding-left: 10px;
+      &-view {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top:20px;
+
+        .item{
+          margin:0;
+          width:3%;
+          height:30px;
         }
-
-        &.quantity {
-          text-align: center;
+        i{
+          line-height:1;
         }
+      }
 
-        &.earned {
-          text-align: right;
+      &-title {
+        display: flex;
+
+
+        > div {
+          margin-left: auto;
+
+          > span {
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+          }
         }
       }
     }

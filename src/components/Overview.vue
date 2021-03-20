@@ -17,10 +17,6 @@
         <h2>{{ kFormat(cps) }}</h2>
       </div>
       <div>
-        <h4>Your level</h4>
-        <h2>{{ level }}</h2>
-      </div>
-      <div>
         <h4>Coins to next level</h4>
         <h2>{{ kFormat(nextLevel) }}</h2>
       </div>

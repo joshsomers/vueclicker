@@ -95,6 +95,7 @@
 
     &-actions {
       margin-left: auto;
+      flex-shrink:0;
 
       button {
         width: 100px;
